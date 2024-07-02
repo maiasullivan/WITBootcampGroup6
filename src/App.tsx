@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
+import { Amplify } from 'aws-amplify';
 import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
+
+import awsExports from './../amplify_outputs.json';
+Amplify.configure(awsExports);
+
+
 
 
 const client = generateClient<Schema>();
