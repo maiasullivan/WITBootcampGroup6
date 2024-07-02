@@ -3,6 +3,7 @@ import './index.css'
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./components/Dashboard/Dashboard.tsx";
+import Report from "./components/Report/Report.tsx";
 import "./index.css";
 import { Amplify } from "aws-amplify";
 import outputs from "../amplify_outputs.json";
@@ -14,6 +15,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <Router>
       <Routes>
         <Route path="/" element={<Dashboard />} />
+        <Route path="/report" element={<Report />} />
       </Routes>
     </Router>
   </React.StrictMode>
