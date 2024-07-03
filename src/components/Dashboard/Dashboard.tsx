@@ -1,13 +1,14 @@
-import  { useEffect, useState } from "react";
+import { useEffect } from 'react';
 import { Amplify } from 'aws-amplify';
-import type { Schema } from "./../../../amplify/data/resource";
-import { generateClient } from "aws-amplify/data";
+import type { Schema } from './../../../amplify/data/resource';
+import { generateClient } from 'aws-amplify/data';
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, BarElement, ArcElement, Title, Tooltip, Legend } from 'chart.js';
-
 import awsExports from './../../../amplify_outputs.json';
+import './Dashboard.css'; // Import the CSS file
+
 Amplify.configure(awsExports);
 
 ChartJS.register(
@@ -24,27 +25,11 @@ ChartJS.register(
 
 const client = generateClient<Schema>();
 
-
 function Dashboard() {
-  const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
-
   useEffect(() => {
-    const subscription = client.models.Todo.observeQuery().subscribe({
-      next: (data) => setTodos([...data.items]),
-    });
+    const subscription = client.models.Todo.observeQuery().subscribe({});
     return () => subscription.unsubscribe();
   }, []);
-
-  function createTodo() {
-    const content = window.prompt("Todo content");
-    if (content) {
-      client.models.Todo.create({ content });
-    }
-  }
-
-  function deleteTodo(id: string) {
-    client.models.Todo.delete({ id });
-  }
 
   const lineData = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -58,27 +43,43 @@ function Dashboard() {
     ],
   };
 
-  
   return (
     <Authenticator>
-      <main>
-        <h1>Welcome Jun</h1>
-        <button onClick={createTodo}>+ new</button>
-        <ul>
-          {todos.map((todo) => (
-            <li onClick={() => deleteTodo(todo.id)} key={todo.id}>{todo.content}</li>
-          ))}
-        </ul>
-        <div>
-          🥳 App successfully hosted. Try creating a new todo.
-          <br />
-        </div>
-        
-        <div className="chart-container" style={{ marginTop: '20px' }}>
-          <h2 className="chart-title">Line Graph</h2>
-          <Line data={lineData} />
-        </div>
-      </main>
+      <div className="container">
+        <aside className="sidebar">
+          <div className="logo">
+            <h2>Logo</h2>
+          </div>
+          <ul className="menu">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Reports</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Account</a></li>
+          </ul>
+        </aside>
+        <main className="content">
+          <header className="header">
+            <h1>Dashboard</h1>
+            <input className="search-bar" type="text" placeholder="Search..." />
+          </header>
+          <div>
+            <h2>Welcome Jun</h2>
+            <ul></ul>
+            <div>
+              🥳 App successfully hosted. Try creating a new todo.
+              <br />
+            </div>
+            <div className="chart-container">
+              <h2 className="chart-title">Line Graph 1</h2>
+              <Line data={lineData} />
+            </div>
+            <div className="chart-container">
+              <h2 className="chart-title">Line Graph 2</h2>
+              <Line data={lineData} />
+            </div>
+          </div>
+        </main>
+      </div>
     </Authenticator>
   );
 }
