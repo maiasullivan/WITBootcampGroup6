@@ -18,6 +18,8 @@ import awsExports from './../../../amplify_outputs.json';
 import './../../index.css'; // Import the updated CSS file
 import { generateClient } from 'aws-amplify/data';
 import type { Schema } from './../../../amplify/data/resource';
+import { Link } from 'react-router-dom';
+
 
 Amplify.configure(awsExports);
 
@@ -147,10 +149,10 @@ function Dashboard() {
               </a>
             </li>
             <li>
-              <a href="#">
-                <span className="icon">📊</span>Reports
-              </a>
-            </li>
+  <Link to="/report">
+    <span className="icon">📊</span>Reports
+  </Link>
+</li>
             <li>
               <a href="#">
                 <span className="icon">⚙️</span>Settings
