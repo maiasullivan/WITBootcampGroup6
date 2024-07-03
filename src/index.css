@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background: linear-gradient(180deg, #f4f4f4, #f4f4f4); /* Light grey background */
+  background: linear-gradient(180deg, #ffffff, #ffffff); /* Light grey background */
   display: flex;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   height: 100vh;
@@ -98,7 +98,7 @@ body {
   border: 1px solid #ddd;
   margin-bottom: 10px; /* Adjust margin as needed */
   width: 100%; /* Take full width */
-  max-width: 400px; /* Adjust the maximum width as needed */
+  max-width: 700px; /* Limit width if necessary */
   box-sizing: border-box; /* Ensure padding and border are included in width */
 }
 

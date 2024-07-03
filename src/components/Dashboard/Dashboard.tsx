@@ -53,7 +53,7 @@ function Dashboard() {
 
     // Function to update chart data dynamically
     const updateData = () => {
-      setInterval(() => {
+      setTimeout(() => {
         setDataSet1((prevData) => {
           const newData = [...prevData, Math.floor(Math.random() * 100)];
           return newData.slice(-20);
@@ -70,7 +70,9 @@ function Dashboard() {
         if (chartRef2.current) {
           chartRef2.current.update();
         }
-      }, 1000);
+        
+        updateData();
+      }, 1000); // Delay of 1000ms or 1 second
     };
 
     updateData();
