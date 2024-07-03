@@ -36,17 +36,28 @@ const client = generateClient<Schema>();
 function Dashboard() {
   const [dataSet1, setDataSet1] = useState<number[]>([]);
   const [dataSet2, setDataSet2] = useState<number[]>([]);
+  const [labels, setLabels] = useState<string[]>([]);
   const chartRef1 = useRef<Chart<"line"> | null>(null);
   const chartRef2 = useRef<Chart<"line"> | null>(null);
 
   useEffect(() => {
     const subscription = client.models.Todo.observeQuery().subscribe({});
 
+    // Function to generate time-based labels
+    const generateLabels = () => {
+      const now = new Date();
+      return Array.from({ length: 20 }, (_, i) => {
+        const date = new Date(now.getTime() - (20 - 1 - i) * 1000);
+        return date.toLocaleTimeString();
+      });
+    };
+
     // Function to fetch initial data and initialize charts
     const initializeData = () => {
       const initialData = Array.from({ length: 20 }, () => Math.floor(Math.random() * 100));
       setDataSet1(initialData);
       setDataSet2(initialData);
+      setLabels(generateLabels());
     };
 
     initializeData();
@@ -59,9 +70,10 @@ function Dashboard() {
           return newData.slice(-20);
         });
         setDataSet2((prevData) => {
-          const newData = [...prevData, Math.floor(Math.random() * 100)];
+          const newData = [...prevData, Math.floor(Math.random() * 12) + 4];
           return newData.slice(-20);
         });
+        setLabels(generateLabels());
 
         // Update the chart each second
         if (chartRef1.current) {
@@ -81,7 +93,7 @@ function Dashboard() {
   }, []);
 
   const lineData1 = {
-    labels: Array.from({ length: 20 }, (_, i) => `Point ${i + 1}`),
+    labels: labels,
     datasets: [
       {
         label: 'Dataset 1',
@@ -93,7 +105,7 @@ function Dashboard() {
   };
 
   const lineData2 = {
-    labels: Array.from({ length: 20 }, (_, i) => `Point ${i + 1}`),
+    labels: labels,
     datasets: [
       {
         label: 'Dataset 2',
@@ -152,14 +164,39 @@ function Dashboard() {
           <h1>Dashboard</h1>
           <div>
             <h2>Welcome Jun</h2>
-            <div className="chart-container">
-              <h2 className="chart-title">Line Graph 1</h2>
-              <Line ref={chartRef1} data={lineData1} />
-            </div>
-            <div className="chart-container">
-              <h2 className="chart-title">Line Graph 2</h2>
-              <Line ref={chartRef2} data={lineData2} />
-            </div>
+            <div className="chart-container heart">
+            <div className="chart-container heart">
+  <div className="chart-header">
+    <h2 className="chart-title">Heart Rate</h2>
+  </div>
+  <div className="buttons-graph-container">
+    <ul className="timeframe-buttons">
+      <li><button>X Minutes</button></li>
+      <li><button>Y Minutes</button></li>
+      <li><button>Z Minutes</button></li>
+    </ul>
+    <div className="graph-content">
+      <Line ref={chartRef1} data={lineData1} />
+    </div>
+  </div>
+</div>
+<div className="chart-container blood-sugar">
+  <div className="chart-header">
+    <h2 className="chart-title">Blood Sugar</h2>
+  </div>
+  <div className="buttons-graph-container">
+    <ul className="timeframe-buttons">
+      <li><button>X Minutes</button></li>
+      <li><button>Y Minutes</button></li>
+      <li><button>Z Minutes</button></li>
+    </ul>
+    <div className="graph-content">
+      <Line ref={chartRef2} data={lineData2} />
+    </div>
+  </div>
+</div>
+</div>
+
           </div>
         </main>
       </div>
