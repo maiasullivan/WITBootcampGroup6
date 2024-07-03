@@ -24,6 +24,7 @@ ChartJS.register(
 
 const client = generateClient<Schema>();
 
+
 function Dashboard() {
   const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
 
