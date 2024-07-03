@@ -96,7 +96,7 @@ function Dashboard() {
     labels: labels,
     datasets: [
       {
-        label: 'Dataset 1',
+        label: '04-07-2024',
         data: dataSet1,
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
@@ -108,7 +108,7 @@ function Dashboard() {
     labels: labels,
     datasets: [
       {
-        label: 'Dataset 2',
+        label: '04-07-2024',
         data: dataSet2,
         fill: false,
         borderColor: 'rgb(153, 102, 255)',
@@ -163,32 +163,34 @@ function Dashboard() {
           </header>
           <h1>Dashboard</h1>
           <div>
-            <h2>Welcome Jun</h2>
-            <div className="chart-container heart">
-            <div className="chart-container heart">
-  <div className="chart-header">
-    <h2 className="chart-title">Heart Rate</h2>
+            <h3>Welcome Jun</h3>
+            <div className="chart-container-hr">
+            <div className="chart-container-hr">
+  <div className="chart-header-hr">
+    <h2 className="chart-title-hr">&emsp;&emsp;&emsp;&emsp;&emsp;Heart Rate</h2>
   </div>
   <div className="buttons-graph-container">
     <ul className="timeframe-buttons">
-      <li><button>X Minutes</button></li>
-      <li><button>Y Minutes</button></li>
-      <li><button>Z Minutes</button></li>
+    <li></li><li></li><li></li>
+      <li><button>30 seconds</button></li>
+      <li><button>2 minutes</button></li>
+      <li><button>5 Minutes</button></li>
     </ul>
     <div className="graph-content">
       <Line ref={chartRef1} data={lineData1} />
     </div>
   </div>
 </div>
-<div className="chart-container blood-sugar">
-  <div className="chart-header">
-    <h2 className="chart-title">Blood Sugar</h2>
+<div className="chart-container-bs">
+  <div className="chart-header-bs">
+    <h2 className="chart-title-bs">&emsp;&emsp;&emsp;&emsp;&emsp;Blood Sugar</h2>
   </div>
   <div className="buttons-graph-container">
     <ul className="timeframe-buttons">
-      <li><button>X Minutes</button></li>
-      <li><button>Y Minutes</button></li>
-      <li><button>Z Minutes</button></li>
+      <li></li><li></li><li></li>
+    <li><button>30 seconds</button></li>
+      <li><button>2 minutes</button></li>
+      <li><button>5 Minutes</button></li>
     </ul>
     <div className="graph-content">
       <Line ref={chartRef2} data={lineData2} />
