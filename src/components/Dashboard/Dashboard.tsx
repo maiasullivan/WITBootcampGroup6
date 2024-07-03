@@ -33,6 +33,21 @@ ChartJS.register(
 
 const client = generateClient<Schema>();
 
+const lineChartOptions = {
+  maintainAspectRatio: false, // Allow the chart to not maintain aspect ratio
+  responsive: true, // Allow the chart to be responsive
+  aspectRatio: 2, // Set a custom aspect ratio for the chart
+  scales: {
+    x: {
+      ticks: {
+        autoSkip: true, // Automatically skip ticks to fit the chart width
+        maxRotation: 0, // Rotate X-axis labels if needed
+        sampleSize: 5, // Number of data points to include in the labels
+      },
+    },
+  },
+};
+
 function Dashboard() {
   const [dataSet1, setDataSet1] = useState<number[]>([]);
   const [dataSet2, setDataSet2] = useState<number[]>([]);
@@ -177,7 +192,7 @@ function Dashboard() {
       <li><button>5 Minutes</button></li>
     </ul>
     <div className="graph-content">
-      <Line ref={chartRef1} data={lineData1} />
+    <Line ref={chartRef1} data={lineData1} options={lineChartOptions} />
     </div>
   </div>
 </div>
@@ -193,7 +208,7 @@ function Dashboard() {
       <li><button>5 Minutes</button></li>
     </ul>
     <div className="graph-content">
-      <Line ref={chartRef2} data={lineData2} />
+    <Line ref={chartRef2} data={lineData2} options={lineChartOptions} />
     </div>
   </div>
 </div>
