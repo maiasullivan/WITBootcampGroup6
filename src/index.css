@@ -26,7 +26,7 @@ body {
 }
 
 .sidebar .logo {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   text-align: center;
 }
 
@@ -214,4 +214,11 @@ button:hover {
 /* Removing vertical grid lines in the chart */
 .chart-container .graph-content .chartjs-render-monitor .chart-grid {
   --line-color: transparent;
+}
+
+
+.report-image-small {
+  max-width: 90%; /* Ensure the image does not exceed its container width */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 200%; /* Example: Set a maximum height */
 }

@@ -19,6 +19,8 @@ import './../../index.css'; // Import the updated CSS file
 import { generateClient } from 'aws-amplify/data';
 import type { Schema } from './../../../amplify/data/resource';
 import { Link } from 'react-router-dom';
+import logo from './../images/logo.png';
+
 
 
 Amplify.configure(awsExports);
@@ -137,8 +139,8 @@ function Dashboard() {
     <Authenticator>
       <div className="container">
         <aside className="sidebar">
-          <div className="logo">
-            <h2>Logo</h2>
+        <div className="logo">
+          <img src={logo} alt="Generated Report" className="report-image-small" />
           </div>
           <div className="horizontal-line"></div>
           <div className="menu-header">MENU</div>
