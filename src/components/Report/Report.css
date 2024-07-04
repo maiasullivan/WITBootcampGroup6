@@ -42,6 +42,7 @@
 }
 
 .report-item-2{
+  text-align: left; 
   max-width: 1000px;
   background-color: #F629424D;
   flex: 1 1 300px; /* Flexible width for each report item */
@@ -49,6 +50,7 @@
   transition: background-color 0.3s ease;}
 
   .report-item-1{
+    text-align: left; 
     max-width: 1000px;
     background-color:#EFDA694D;
     flex: 1 1 300px; /* Flexible width for each report item */
@@ -57,6 +59,7 @@
 
 
     .report-item-3{
+      text-align: left; 
       max-width: 1000px;
       background-color:#4CBDEE4D;
       flex: 1 1 300px; /* Flexible width for each report item */
@@ -65,6 +68,7 @@
 
 
       .report-item-4{
+        text-align: left; 
         max-width: 1000px;
         background-color: #934CEE4D;;
         flex: 1 1 300px; /* Flexible width for each report item */
@@ -73,6 +77,7 @@
 
 
         .report-item-5{
+          text-align: left; 
           max-width: 1000px;
           background-color:#F18B4240;
           flex: 1 1 300px; /* Flexible width for each report item */
@@ -81,6 +86,7 @@
 
 
           .report-item-6{
+            text-align: left; 
             max-width: 1000px;
             background-color:#50D5214D;
             flex: 1 1 300px; /* Flexible width for each report item */
