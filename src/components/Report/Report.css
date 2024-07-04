@@ -11,6 +11,14 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
+.main-title {
+  margin-top: 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: left;
+}
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
