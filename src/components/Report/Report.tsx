@@ -22,7 +22,7 @@ function Report() {
           <ul className="menu">
             <li>
               <a href="#">
-                <span className="icon">🏠</span>Report
+                <span className="icon">🏠</span>Dashboard
               </a>
             </li>
             <li>
