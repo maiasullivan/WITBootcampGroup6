@@ -36,10 +36,10 @@ function GenReport() {
   const chartRef2 = useRef<Chart<"line"> | null>(null);
   const chartRef3 = useRef<Chart<"line"> | null>(null);
 
-  const dates = ['June 19', 'June 20', 'June 21', 'June 22', 'June 23'];
-  const heartRateData = [72, 75, 78, 77, 74];
-  const bloodSugarData = [90, 95, 92, 88, 91];
-  const bloodOxygenData = [98, 97, 99, 96, 97];
+  const dates = ['June 15', 'June 16', 'June 17', 'June 18', 'June 19', 'June 20', 'June 21', 'June 22', 'June 23', 'June 24', 'June 25'];
+  const heartRateData = [72, 74, 70, 72, 75, 78, 77, 74, 76, 74, 77];
+  const bloodSugarData = [89, 86, 85, 90, 95, 92, 88, 91, 89, 89, 90];
+  const bloodOxygenData = [96, 97, 97, 98, 97, 99, 96, 97, 98, 97, 96];
 
   const dataTemplate = (label: string, data: number[], color: string) => ({
     labels: dates,
@@ -58,6 +58,11 @@ function GenReport() {
   const bloodSugarChartData = dataTemplate('Blood Sugar (mg/dL)', bloodSugarData, 'rgb(54, 162, 235)');
   const bloodOxygenChartData = dataTemplate('Blood Oxygen (%)', bloodOxygenData, 'rgb(75, 192, 192)');
 
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+  };
+  
   return (
     <Authenticator>
       <div className="container">
@@ -106,15 +111,21 @@ function GenReport() {
           <h1>General Report</h1>
           <div className="chart-container">
             <h2 className="chart-title">Heart Rate (bpm)</h2>
-            <Line ref={chartRef1} data={heartRateChartData} />
+            <div className="chart-wrapper">
+              <Line ref={chartRef1} data={heartRateChartData} options={options} />
+            </div>
           </div>
           <div className="chart-container">
             <h2 className="chart-title">Blood Sugar (mg/dL)</h2>
-            <Line ref={chartRef2} data={bloodSugarChartData} />
+            <div className="chart-wrapper">
+              <Line ref={chartRef2} data={bloodSugarChartData} options={options} />
+            </div>
           </div>
           <div className="chart-container">
             <h2 className="chart-title">Blood Oxygen (%)</h2>
-            <Line ref={chartRef3} data={bloodOxygenChartData} />
+            <div className="chart-wrapper">
+              <Line ref={chartRef3} data={bloodOxygenChartData} options={options} />
+            </div>
           </div>
         </main>
       </div>

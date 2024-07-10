@@ -222,3 +222,14 @@ button:hover {
   height: auto; /* Maintain aspect ratio */
   max-height: 200%; /* Example: Set a maximum height */
 }
+
+.chart-container-r {
+  margin: 20px 0;
+}
+
+.chart-wrapper {
+  width: 100%;  /* Set the desired width */
+  height: 250px; /* Set the desired height */
+  max-width: 800px; /* Adjust the max width as needed */
+  margin: 0 auto;
+}
